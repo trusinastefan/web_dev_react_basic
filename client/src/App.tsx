@@ -1,10 +1,11 @@
 import React from "react";
-import { Demo } from "./pages/Demo/Demo";
+import Event from "./components/Event";
+import data from "./data";
 
 const App: React.FC = () => {
   return (
     <div>
-      <Demo name="lada" />
+      <Event {...data} />
     </div>
   )
   ;
