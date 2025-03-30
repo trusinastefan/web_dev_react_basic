@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { PollingEvent } from "../types";
-import { Link } from "react-router-dom";
+import { PollingEvent } from "../../types";
+import { Link } from "react-router";
 import { getEvents } from "./EventsFunctions";
 
 function useFetchData(): { data: PollingEvent[] | undefined; loading: boolean; error: Error | undefined } {

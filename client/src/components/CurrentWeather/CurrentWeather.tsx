@@ -8,7 +8,7 @@ type CurrentWeatherProps = {
 function useFetchData(city: string | undefined) {
   const [data, setData] = useState({ min: null, max: null });
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<Error | null>(null);
+  const [error, setError] = useState<Error>();
 
   useEffect(() => {
     async function actionGetWeather(city: string | undefined) {
@@ -36,13 +36,13 @@ const CurrentWeather: React.FC<CurrentWeatherProps> = ({ city }) => {
   const { data, loading, error } = useFetchData(city);
   if (loading) {
     return <div>Loading weather...</div>;
-  } else if (error !== null) {
+  } else if (error) {
     return <div>{error.message}</div>;
   } else {
     return (
       <div>
-        <div>{`Minimum temperature: ${data.min}`}</div>
-        <div>{`Maximum temperature: ${data.max}`}</div>
+        <div>Minimum temperature: {data.min}</div>
+        <div>Maximum temperature: {data.max}</div>
       </div>
     );
   }

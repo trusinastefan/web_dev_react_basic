@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import EventDatesTable from "./EventDatesTable";
-import CurrentWeather from "./CurrentWeather";
-import { useParams } from "react-router-dom";
+import EventDatesTable from "../EventDatesTable/EventDatesTable";
+import CurrentWeather from "../CurrentWeather/CurrentWeather";
+import { useParams } from "react-router";
 import { getEvent } from "./EventDetailFunctions";
-import { PollingEvent } from "../types";
+import { PollingEvent } from "../../types";
 
 function useFetchData(id: string | undefined): { data: PollingEvent | undefined; loading: boolean; error: Error | undefined } {
   const [data, setData] = useState();

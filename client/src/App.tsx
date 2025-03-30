@@ -1,9 +1,9 @@
 import React from "react";
 import { BrowserRouter } from "react-router";
 import { Link, Route, Routes } from "react-router-dom";
-import Events from "./components/Events";
-import EventDetail from "./components/EventDetail";
-import NewEventForm from "./components/NewEventForm";
+import Events from "./components/Events/Events";
+import EventDetail from "./components/EventDetail/EventDetail";
+import NewEventForm from "./components/NewEventForm/NewEventForm";
 
 const App: React.FC = () => {
   return (

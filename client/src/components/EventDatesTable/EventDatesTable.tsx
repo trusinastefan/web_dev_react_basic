@@ -1,5 +1,5 @@
 import React from "react";
-import { DateRecords } from "../types";
+import { DateRecords } from "../../types";
 
 const EventDatesTable: React.FC<DateRecords> = ({ dates }) => {
   const sorted_dates = [...dates].sort((a, b) => a.timestamp - b.timestamp);

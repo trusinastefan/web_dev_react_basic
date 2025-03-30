@@ -1,6 +1,6 @@
 import { render } from "@testing-library/react";
 import EventDatesTable from "./EventDatesTable";
-import { DateRecords } from "../types";
+import { DateRecords } from "../../types";
 
 const data: DateRecords = {
   dates: [
