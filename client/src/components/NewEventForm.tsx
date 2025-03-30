@@ -1,16 +1,21 @@
 import React from "react";
 import { Field, FieldArray, Form, Formik } from "formik";
+import { useNavigate } from "react-router-dom";
 
 const NewEventForm: React.FC = () => {
+  const navigate = useNavigate();
   return (
     <Formik
       initialValues={{ title: "", location: "", dates: [] }}
-      onSubmit={(values) => {
-        fetch("/api/events", {
+      onSubmit={async (values) => {
+        const response = await fetch("http://localhost:4000/api/events", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(values)
         });
+        if (response.ok) {
+          navigate("/events");
+        }
       }}
     >
       {
@@ -21,7 +26,7 @@ const NewEventForm: React.FC = () => {
               <Field id="title" name="title" label="Title" type="text" />
             </div>
             <div>
-              <label htmlFor="location">Name</label>
+              <label htmlFor="location">Location</label>
               <Field id="location" name="location" label="Location" type="text" />
             </div>
             <div>
