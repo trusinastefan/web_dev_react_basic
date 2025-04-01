@@ -1,8 +1,8 @@
 import { render } from "@testing-library/react";
 import EventDatesTable from "./EventDatesTable";
-import { EventTableProps } from "../types";
+import { DateRecords } from "../../types";
 
-const data: EventTableProps = {
+const data: DateRecords = {
   dates: [
     {
       timestamp: 14,
@@ -75,8 +75,10 @@ const data: EventTableProps = {
   ]
 };
 
-test("correct number of table rows", () => {
-  const { container } = render(<EventDatesTable {...data} />);
-  const body_rows = container.querySelectorAll("tbody tr");
-  expect(body_rows.length).toBe(8);
+describe ("EventDatesTable", () => {
+  test("correct number of table rows", () => {
+    const { container } = render(<EventDatesTable {...data} />);
+    const body_rows = container.querySelectorAll("tbody tr");
+    expect(body_rows.length).toBe(8);
+  });
 });

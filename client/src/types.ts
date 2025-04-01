@@ -8,13 +8,13 @@ export type DateRecord = {
   records: UserRecord[];
 };
 
-export type EventProps = {
+export type PollingEvent = {
   location?: string;
-  id: string;
   title: string;
+  id: string;
   dates: DateRecord[];
 };
 
-export type EventTableProps = {
+export type DateRecords = {
   dates: DateRecord[];
 };

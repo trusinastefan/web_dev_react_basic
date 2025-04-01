@@ -1,16 +1,15 @@
 import React from "react";
-import { EventTableProps } from "../types";
+import { DateRecords } from "../../types";
 
-const EventDatesTable: React.FC<EventTableProps> = ({ dates }) => {
-  dates.sort((a, b) => a.timestamp - b.timestamp);
-  const timestamps = dates.map((date) => date.timestamp);
+const EventDatesTable: React.FC<DateRecords> = ({ dates }) => {
+  const sorted_dates = [...dates].sort((a, b) => a.timestamp - b.timestamp);
   const users = new Map();
-  dates.forEach((date) => {
+  sorted_dates.forEach((date) => {
     date.records.forEach((record) => {
       if (!(users.has(record.name))) {
         users.set(record.name, new Map());
-        timestamps.forEach((t) => {
-          users.get(record.name).set(t, "");
+        sorted_dates.forEach((d) => {
+          users.get(record.name).set(d.timestamp, "");
         });
       }
       users.get(record.name).set(date.timestamp, record.answer);
@@ -22,15 +21,15 @@ const EventDatesTable: React.FC<EventTableProps> = ({ dates }) => {
         <thead>
           <tr>
             <th key="persons">Persons</th>
-            {timestamps.map((t, i) => (<th key={i}>{t}</th>))}
+            {sorted_dates.map((d, i) => (<th key={i}>{d.timestamp}</th>))}
           </tr>
         </thead>
         <tbody>
           {Array.from(users.keys()).map((name) => (
             <tr key={name}>
               <td>{name}</td>
-              {timestamps.map((t, i) => (
-                <td key={`${name}_${i}`}>{users.get(name).get(t)}</td>
+              {sorted_dates.map((d, i) => (
+                <td key={`${name}_${i}`}>{users.get(name).get(d.timestamp)}</td>
               ))}
             </tr>
           ))}
